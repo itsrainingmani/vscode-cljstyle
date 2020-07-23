@@ -1,0 +1,71 @@
+{
+	"name": "vscode-cljstyle",
+	"displayName": "cljstyle",
+	"description": "Format Clojure/Clojurescript code with Cljstyle",
+	"version": "0.1.0",
+	"publisher": "itsrainingmani",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Formatters"
+	],
+	"icon": "images/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itsrainingmani/vscode-cljstyle.git"
+	},
+	"activationEvents": [
+		"onLanguage:clojure"
+	],
+	"main": "./extension",
+	"contributes": {
+		"configuration": [
+			{
+				"title": "cljstyle",
+				"type": "object",
+				"properties": {
+					"cljfmt.indentation": {
+						"type": "boolean",
+						"default": true,
+						"description": "true if cljstyle should correct the indentation of your code."
+					},
+					"cljfmt.removeSurroundingWhitespace": {
+						"type": "boolean",
+						"default": true,
+						"description": "true if cljstyle should remove whitespace surrounding inner forms. This will convert ( foo ) to (foo)."
+					},
+					"cljfmt.removeTrailingWhitespace": {
+						"type": "boolean",
+						"default": true,
+						"description": "true if cljstyle should remove trailing whitespace in lines. This will convert (foo) \\n to (foo)\\n."
+					},
+					"cljfmt.insertMissingWhitespace": {
+						"type": "boolean",
+						"default": true,
+						"description": "true if cljstyle should insert whitespace missing from between elements. This will convert (foo(bar)) to (foo (bar))."
+					},
+					"cljfmt.removeConsecutiveBlankLines": {
+						"type": "boolean",
+						"default": true,
+						"description": "true if cljstyle should collapse consecutive blank lines. This will convert (foo)\n\n\n(bar) to (foo)\n\n(bar)"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"clean": "rm -rf .shadow-cljs/",
+		"watch": "npx shadow-cljs watch :extension",
+		"compile": "npx shadow-cljs compile :extension",
+		"release": "npx shadow-cljs release :extension",
+		"vscode:prepublish": "npm run clean && npm run release",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"shadow-cljs": "2.10.17",
+		"vscode": "1.1.36"
+	}
+}
