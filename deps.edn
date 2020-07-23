@@ -1,0 +1,6 @@
+{:deps
+ {greglook/cljstyle {:git/url "https://github.com/greglook/cljstyle.git"
+                     :sha "fea7de8428fec7dd0d2468074e69ba158bd795f9"
+                     :tag "0.13.0"}
+  thheller/shadow-cljs {:mvn/version "2.10.17"}}
+ :paths ["src"]}

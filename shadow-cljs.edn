@@ -1,0 +1,7 @@
+{:deps true
+ :builds
+ {:extension
+  {:target :node-library
+   :compiler-options {:optimizations :simple}
+   :exports {:activate vscode-cljstyle.core/activate}
+   :output-to "extension.js"}}}
